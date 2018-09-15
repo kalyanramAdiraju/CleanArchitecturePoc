@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity{
     TextView mPassword;
 
     @OnClick(R.id.submit)
-    private void submitFunctionality(){
+    public void submitFunctionality(){
 
     }
 
