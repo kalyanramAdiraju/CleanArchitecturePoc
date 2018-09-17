@@ -8,6 +8,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -42,23 +43,52 @@ android {
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/org.powermock/powermock-mockito-release-full
+
+    // power mockito dependency
     testImplementation group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.5.4', ext: 'pom'
     testImplementation("org.assertj:assertj-core:3.11.1")
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // espresso dependency for UI testing
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+
+
+    // support library dependencies
+    implementation 'com.android.support:support-annotations:27.1.1'
+
+    implementation 'com.android.support:design:28.0.0rc2'
     implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:28.0.0-rc02'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:recyclerview-v7:28.0.0-rc02'
+    // dex related depencency
+    implementation 'com.android.support:multidex:1.0.3'
+
+
+    // Domain layer test dependencies
     testImplementation 'junit:junit:4.12'
+
+    // Network dependencies
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.4.0'
-    implementation 'com.google.dagger:dagger:2.13'
-    implementation 'com.google.dagger:dagger-compiler:2.13'
+    implementation 'com.google.dagger:dagger:2.14.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
+
+    //to enable DaggerActivity, DaggerBroadcastReceiver, DaggerFragment etc classes
+    implementation 'com.google.dagger:dagger-android:2.14.1'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.14.1'
+
+    //support libraries with dagger 2
+    implementation 'com.google.dagger:dagger-android-support:2.14.1'
+    // Android architectural components dependency
     implementation 'android.arch.lifecycle:runtime:1.1.1'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
+    // UI dependency injection library
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.jakewharton:butterknife-compiler:8.8.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:recyclerview-v7:28.0.0-rc02'
+
 }

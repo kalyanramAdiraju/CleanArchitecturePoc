@@ -1,4 +1,4 @@
-package com.cleanArchitecturePoc.Login;
+package com.cleanArchitecturePoc.Login.UI;
 
 import org.junit.After;
 import org.junit.Before;
