@@ -1,4 +1,4 @@
-package com.cleanArchitecturePoc.Commons.Exception;
+package com.cleanArchitecturePoc.commons.exception;
 
 public class PropertiesUtilityException extends Exception{
 public PropertiesUtilityException(String message){

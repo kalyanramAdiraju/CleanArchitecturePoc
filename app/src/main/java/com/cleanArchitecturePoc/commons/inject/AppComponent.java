@@ -1,6 +1,6 @@
-package com.cleanArchitecturePoc.Commons;
+package com.cleanArchitecturePoc.commons.inject;
 
-import com.cleanArchitecturePoc.Login.UI.LoginActivity;
+import com.cleanArchitecturePoc.login.ui.LoginActivity;
 
 import javax.inject.Singleton;
 

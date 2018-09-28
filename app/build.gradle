@@ -15,6 +15,9 @@ android {
                 includeCompileClasspath false
             }
         }
+        dataBinding {
+            enabled = true
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -48,11 +51,15 @@ dependencies {
     testImplementation group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.5.4', ext: 'pom'
     testImplementation("org.assertj:assertj-core:3.11.1")
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'org.mockito:mockito-core:2.7.6'
+    // dependency for testing android components
+    testImplementation 'org.robolectric:robolectric:4.0-alpha-3'
 
     // espresso dependency for UI testing
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
+
 
 
     // support library dependencies
@@ -75,7 +82,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.4.0'
     implementation 'com.google.dagger:dagger:2.14.1'
+    testImplementation 'com.google.dagger:dagger-compiler:2.14.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
+    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
 
     //to enable DaggerActivity, DaggerBroadcastReceiver, DaggerFragment etc classes
     implementation 'com.google.dagger:dagger-android:2.14.1'

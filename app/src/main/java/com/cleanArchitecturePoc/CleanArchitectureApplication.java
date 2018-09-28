@@ -2,14 +2,18 @@ package com.cleanArchitecturePoc;
 
 import android.app.Application;
 
-import com.cleanArchitecturePoc.Commons.AppComponent;
-import com.cleanArchitecturePoc.Commons.AppModule;
-import com.cleanArchitecturePoc.Commons.DaggerAppComponent;
+import com.cleanArchitecturePoc.commons.inject.AppComponent;
+import com.cleanArchitecturePoc.commons.inject.AppModule;
+import com.cleanArchitecturePoc.commons.inject.DaggerAppComponent;
+
+import javax.inject.Singleton;
+
+import dagger.Component;
 
 
 public class CleanArchitectureApplication extends Application {
 
-private AppComponent component;
+    private AppComponent component;
 
     @Override
     public void onCreate() {
@@ -17,16 +21,19 @@ private AppComponent component;
         initComponent();
     }
 
-    public void initComponent() {
-    component= DaggerAppComponent.builder().
-            appModule(getAppModule()).build();
+    protected AppModule getAppModule() {
+        return new AppModule(this);
     }
 
-    public AppComponent getComponent() {
+    public AppComponent getAppComponent() {
         return component;
     }
 
-    public AppModule getAppModule() {
-        return new AppModule(this);
+    public void initComponent() {
+        component = DaggerAppComponent.builder()
+                .appModule(getAppModule())
+                .build();
+
+
     }
 }
